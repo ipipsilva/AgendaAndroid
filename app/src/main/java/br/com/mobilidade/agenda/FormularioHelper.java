@@ -1,6 +1,9 @@
 package br.com.mobilidade.agenda;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 
 import br.com.mobilidade.agenda.modelo.Aluno;
@@ -17,6 +20,7 @@ public class FormularioHelper {
     private final EditText email;
     private final EditText site;
     private final RatingBar nota;
+    private final ImageView foto;
 
     private Aluno aluno;
 
@@ -28,6 +32,7 @@ public class FormularioHelper {
          email = (EditText) activity.findViewById(R.id.formulario_email);
          site = (EditText) activity.findViewById(R.id.formulario_site);
          nota = (RatingBar) activity.findViewById(R.id.formulario_nota);
+         foto = (ImageView) activity.findViewById(R.id.formulario_foto);
          aluno = new Aluno();
     }
 
@@ -38,6 +43,7 @@ public class FormularioHelper {
         aluno.setEmail(email.getText().toString());
         aluno.setSite(site.getText().toString());
         aluno.setNota(Double.valueOf(nota.getProgress()));
+        aluno.setCaminhoFoto((String) foto.getTag());
         return aluno;
     }
 
@@ -48,6 +54,19 @@ public class FormularioHelper {
         email.setText(aluno.getEmail());
         site.setText(aluno.getSite());
         nota.setProgress(aluno.getNota().intValue());
+        carregaImagem(aluno.getCaminhoFoto());
         this.aluno = aluno;
+    }
+
+    public void carregaImagem(String caminhoFoto){
+
+        if(null != caminhoFoto){
+            Bitmap bitmap = BitmapFactory.decodeFile(caminhoFoto);
+            Bitmap bitmapReduzido = bitmap.createScaledBitmap(bitmap, 300, 300, true);
+            foto.setImageBitmap(bitmapReduzido);
+            foto.setScaleType(ImageView.ScaleType.FIT_XY);
+            foto.setTag(caminhoFoto);
+        }
+
     }
 }
