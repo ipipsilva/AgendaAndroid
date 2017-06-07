@@ -64,7 +64,7 @@ public class FormularioHelper {
             Bitmap bitmap = BitmapFactory.decodeFile(caminhoFoto);
             Bitmap bitmapReduzido = bitmap.createScaledBitmap(bitmap, 300, 300, true);
             foto.setImageBitmap(bitmapReduzido);
-            foto.setScaleType(ImageView.ScaleType.FIT_XY);
+            foto.setScaleType(ImageView.ScaleType.CENTER_CROP);
             foto.setTag(caminhoFoto);
         }
 

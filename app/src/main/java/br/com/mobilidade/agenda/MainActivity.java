@@ -7,6 +7,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +19,8 @@ import android.widget.Toast;
 import java.util.List;
 import java.util.jar.Manifest;
 
+import br.com.mobilidade.agenda.adapter.AlunoAdapter;
+import br.com.mobilidade.agenda.converter.AlunoConverter;
 import br.com.mobilidade.agenda.dao.AlunoDAO;
 import br.com.mobilidade.agenda.modelo.Aluno;
 
@@ -66,8 +69,25 @@ public class MainActivity extends AppCompatActivity {
         List<Aluno> alunos = alunoDAO.listarAlunos();
         alunoDAO.close();
 
-        ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this, android.R.layout.simple_expandable_list_item_1, alunos);
+        AlunoAdapter adapter = new AlunoAdapter(this, alunos);
+
         lista.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_lista, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.enviar_dados:
+                new EnviaAlunoTask(this).execute();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
