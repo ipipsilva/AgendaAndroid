@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Schadule</string>
+    <string name="nome">Name</string>
+    <string name="endere_o">Address</string>
+    <string name="telefone">Phone</string>
+    <string name="email">Email</string>
+    <string name="site">Site</string>
+</resources>

@@ -34,31 +34,31 @@
 
         <EditText
             android:id="@+id/formulario_nome"
-            android:hint="Nome"
+            android:hint="@string/nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/formulario_endereco"
-            android:hint="Endereço"
+            android:hint="@string/endere_o"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/formulario_telefone"
-            android:hint="Telefone"
+            android:hint="@string/telefone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/formulario_email"
-            android:hint="E-mail"
+            android:hint="@string/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/formulario_site"
-            android:hint="Site"
+            android:hint="@string/site"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
